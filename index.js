@@ -12,6 +12,7 @@ request.onload = function() {
   }
 
 function eventsTable(lista){
+    const dataMcc = {};
     
     for(let i = 0; i < 90; i++){ 
         const entrada = lista[i];
@@ -23,7 +24,11 @@ function eventsTable(lista){
         const squirrel = entrada.squirrel
         let texto = "";
         for(var j in eventos){
-            texto += eventos[j] + ',';
+            let evento = eventos[j];
+            texto += evento + ',';
+            if(Object.keys(dataMcc).includes(evento)){
+                /* dataMcc.evento.TP */
+            }
         }
         texto = texto.slice(0, texto.length-1)
         col1.textContent = i+1;
@@ -33,6 +38,10 @@ function eventsTable(lista){
         tr.appendChild(col1);
         tr.appendChild(col2);
         tr.appendChild(col3);
+
+        if(squirrel == true){
+            tr.style.backgroundColor = "pink";
+        }
 
         table.appendChild(tr);
     }
